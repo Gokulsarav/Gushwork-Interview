@@ -77,37 +77,92 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Hover Zoom functionality for all image containers
-    function initZoom(containerSelector, imageSelector, scale = 1.75) {
+    // Enhanced Side-by-Side Zoom functionality
+    function initProductZoom(imgID, resultID, lensID) {
+        const img = document.getElementById(imgID);
+        const result = document.getElementById(resultID);
+        const lens = document.getElementById(lensID);
+
+        if (!img || !result || !lens) return;
+
+        let cx, cy;
+
+        function updateRatios() {
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+            result.style.backgroundSize = (img.offsetWidth * cx) + "px " + (img.offsetHeight * cy) + "px";
+        }
+
+        img.addEventListener('load', updateRatios);
+        window.addEventListener('resize', updateRatios);
+        updateRatios();
+
+        function moveLens(e) {
+            e.preventDefault();
+            const pos = getCursorPos(e);
+            let x = pos.x - (lens.offsetWidth / 2);
+            let y = pos.y - (lens.offsetHeight / 2);
+
+            if (x > img.offsetWidth - lens.offsetWidth) x = img.offsetWidth - lens.offsetWidth;
+            if (x < 0) x = 0;
+            if (y > img.offsetHeight - lens.offsetHeight) y = img.offsetHeight - lens.offsetHeight;
+            if (y < 0) y = 0;
+
+            lens.style.left = x + "px";
+            lens.style.top = y + "px";
+            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+        }
+
+        function getCursorPos(e) {
+            const a = img.getBoundingClientRect();
+            let x = (e.pageX || e.touches[0].pageX) - a.left - window.pageXOffset;
+            let y = (e.pageY || e.touches[0].pageY) - a.top - window.pageYOffset;
+            return { x: x, y: y };
+        }
+
+        const showZoom = () => {
+            lens.style.display = "block";
+            result.style.display = "block";
+            result.style.backgroundImage = `url('${img.src}')`;
+            updateRatios();
+        };
+
+        const hideZoom = () => {
+            lens.style.display = "none";
+            result.style.display = "none";
+        };
+
+        img.addEventListener("mouseenter", showZoom);
+        img.addEventListener("mousemove", moveLens);
+        img.addEventListener("mouseleave", hideZoom);
+
+        // Touch support
+        img.addEventListener("touchstart", showZoom);
+        img.addEventListener("touchmove", moveLens);
+        img.addEventListener("touchend", hideZoom);
+    }
+
+    initProductZoom('main-product-image', 'zoom-result', 'zoom-lens');
+
+    // Keep the simple zoom for app cards
+    function initSimpleZoom(containerSelector, imageSelector, scale = 1.3) {
         const containers = document.querySelectorAll(containerSelector);
         containers.forEach(container => {
             const image = container.querySelector(imageSelector);
             if (!image) return;
-
             container.addEventListener('mousemove', function (e) {
-                if (e.target.closest('button') || e.target.closest('.gallery-nav-btn')) {
-                    image.style.transform = 'scale(1)';
-                    image.style.transformOrigin = 'center center';
-                    return;
-                }
-
                 const bounds = container.getBoundingClientRect();
                 const posX = ((e.clientX - bounds.left) / bounds.width) * 100;
                 const posY = ((e.clientY - bounds.top) / bounds.height) * 100;
-
                 image.style.transformOrigin = posX + '% ' + posY + '%';
                 image.style.transform = `scale(${scale})`;
             });
-
             container.addEventListener('mouseleave', function () {
                 image.style.transform = 'scale(1)';
-                image.style.transformOrigin = 'center center';
             });
         });
     }
-
-    initZoom('.main-image-container', '.main-product-image', 1.75);
-    initZoom('.app-card', 'img', 1.3);
+    initSimpleZoom('.app-card', 'img', 1.3);
 
 
     // FAQ Toggle (exclusive)

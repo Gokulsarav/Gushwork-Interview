@@ -89,13 +89,16 @@
 
                 <!-- Product Image Gallery with Zoom & Thumbnails -->
                 <div class="product-gallery">
-                    <div class="main-image-container">
-                        <img alt="Product Image" src="./assets/hdpe-product.jpg" class="main-product-image">
-                        <button class="gallery-nav-btn prev"><img src="./assets/icons/arrow-right.svg"
+                    <div class="main-image-container" id="main-image-container">
+                        <div id="zoom-lens" class="zoom-lens"></div>
+                        <img alt="Product Image" src="./assets/hdpe-product.jpg" class="main-product-image"
+                            id="main-product-image">
+                        <button class="gallery-nav-btn prev"><img src="./assets/icons/arrow-left.svg"
                                 alt="prev"></button>
-                        <button class="gallery-nav-btn next"><img src="./assets/icons/arrow-left.svg"
+                        <button class="gallery-nav-btn next"><img src="./assets/icons/arrow-right.svg"
                                 alt="next"></button>
                     </div>
+                    <div id="zoom-result" class="zoom-result"></div>
                     <div class="thumbnail-row">
                         <div class="thumb active"><img src="./assets/hdpe-product.jpg" alt="Pipe work thumb 1"></div>
                         <div class="thumb"><img src="./assets/hdpe-product.jpg" alt="Pipe work thumb 2"></div>
@@ -344,8 +347,8 @@
                         precision-engineered machinery delivers superior performance across diverse applications.</p>
                 </div>
                 <div class="apps-nav">
-                    <button class="nav-circle"><img src="./assets/icons/arrow-right.svg" alt="Left"></button>
-                    <button class="nav-circle"><img src="./assets/icons/arrow-left.svg" alt="Right"></button>
+                    <button class="nav-circle"><img src="./assets/icons/arrow-left.svg" alt="Previous"></button>
+                    <button class="nav-circle"><img src="./assets/icons/arrow-right.svg" alt="Next"></button>
                 </div>
             </div>
 
@@ -445,7 +448,8 @@
                         maintains perfect roundness and wall thickness uniformity.</p>
                     <ul class="mfg-checklist">
                         <li><i class="fa-solid fa-circle-check check-icon"></i> PE100 grade material</li>
-                        <li><i class="fa-solid fa-circle-check check-icon"></i> Optimal molecular weight distribution</li>
+                        <li><i class="fa-solid fa-circle-check check-icon"></i> Optimal molecular weight distribution
+                        </li>
                     </ul>
                 </div>
                 <div class="mfg-content-right">
@@ -593,18 +597,15 @@
         <div class="resources-list-container">
             <div class="resource-item">
                 <span class="resource-name">HDPE Pipe Installation Manual (PDF)</span>
-                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download-simple.svg" alt="Download"
-                        class="dl-icon"></a>
+                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download.svg" class="dl-icon" alt="Download"></a>
             </div>
             <div class="resource-item">
                 <span class="resource-name">Maintenance & Inspection Handbook (PDF)</span>
-                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download-simple.svg" alt="Download"
-                        class="dl-icon"></a>
+                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download.svg" class="dl-icon" alt="Download"></a>
             </div>
             <div class="resource-item">
                 <span class="resource-name">Engineering Specifications Sheet (PDF)</span>
-                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download-simple.svg" alt="Download"
-                        class="dl-icon"></a>
+                <a href="#" class="resource-dl">Download PDF <img src="./assets/icons/download.svg" class="dl-icon" alt="Download"></a>
             </div>
         </div>
     </section>
