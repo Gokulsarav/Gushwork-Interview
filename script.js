@@ -77,24 +77,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Hover Zoom on Product Image
-    const imageWrapper = document.querySelector('.main-image-container');
-    if (imageWrapper && heroImage) {
-        imageWrapper.addEventListener('mousemove', function (e) {
-            const bounds = imageWrapper.getBoundingClientRect();
-            // figure out where the cursor is as a percentage
-            const posX = ((e.clientX - bounds.left) / bounds.width) * 100;
-            const posY = ((e.clientY - bounds.top) / bounds.height) * 100;
+    // Hover Zoom functionality for all image containers
+    function initZoom(containerSelector, imageSelector, scale = 1.75) {
+        const containers = document.querySelectorAll(containerSelector);
+        containers.forEach(container => {
+            const image = container.querySelector(imageSelector);
+            if (!image) return;
 
-            heroImage.style.transformOrigin = posX + '% ' + posY + '%';
-            heroImage.style.transform = 'scale(1.75)';
-        });
+            container.addEventListener('mousemove', function (e) {
+                if (e.target.closest('button') || e.target.closest('.gallery-nav-btn')) {
+                    image.style.transform = 'scale(1)';
+                    image.style.transformOrigin = 'center center';
+                    return;
+                }
 
-        imageWrapper.addEventListener('mouseleave', function () {
-            heroImage.style.transform = 'scale(1)';
-            heroImage.style.transformOrigin = 'center center';
+                const bounds = container.getBoundingClientRect();
+                const posX = ((e.clientX - bounds.left) / bounds.width) * 100;
+                const posY = ((e.clientY - bounds.top) / bounds.height) * 100;
+
+                image.style.transformOrigin = posX + '% ' + posY + '%';
+                image.style.transform = `scale(${scale})`;
+            });
+
+            container.addEventListener('mouseleave', function () {
+                image.style.transform = 'scale(1)';
+                image.style.transformOrigin = 'center center';
+            });
         });
     }
+
+    initZoom('.main-image-container', '.main-product-image', 1.75);
+    initZoom('.app-card', 'img', 1.3);
+
 
     // FAQ Toggle (exclusive)
     const faqEntries = document.querySelectorAll('.faq-item');
@@ -104,14 +118,12 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger.addEventListener('click', function () {
             var wasOpen = entry.classList.contains('active');
 
-            // collapse every item first
             faqEntries.forEach(function (faq) {
                 faq.classList.remove('active');
                 faq.querySelector('.faq-body').style.display = 'none';
                 faq.querySelector('.faq-toggle i').className = 'fa-solid fa-chevron-down';
             });
 
-            // expand this one if it wasn't already showing
             if (!wasOpen) {
                 entry.classList.add('active');
                 entry.querySelector('.faq-body').style.display = 'block';
@@ -150,13 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
         closeQuoteBtn.addEventListener('click', () => quoteModal.classList.remove('active'));
     }
 
-    // UX Logic: Close modals when clicking on the darkened backdrop (outside the modal box)
     window.addEventListener('click', (e) => {
         if (e.target === downloadModal) downloadModal.classList.remove('active');
         if (e.target === quoteModal) quoteModal.classList.remove('active');
     });
 
-    // Applications Section Scroll
     const carouselTrack = document.querySelector('.apps-carousel');
     const scrollBtns = document.querySelectorAll('.apps-nav .nav-circle');
     var scrollStep = 340;
@@ -281,18 +291,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Header Scroll Behaviour
     var siteHeader = document.querySelector('.main-header');
-    var topBanner = document.querySelector('.top-section-bg');
 
-    if (siteHeader && topBanner) {
+    if (siteHeader) {
         window.addEventListener('scroll', function () {
-            var offset = topBanner.offsetHeight - 100;
-            if (window.scrollY > offset) {
+            if (window.scrollY > 20) {
                 siteHeader.classList.add('is-sticky');
             } else {
                 siteHeader.classList.remove('is-sticky');
             }
         });
     }
+
+
 
 });
 
