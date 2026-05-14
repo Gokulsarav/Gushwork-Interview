@@ -5,7 +5,7 @@ A single-page product landing site for Mangalam HDPE Pipes. Built as part of a f
 index.html    → all the markup, section by section
 styles.css    → styling, responsive breakpoints, design tokens
 script.js     → gallery, FAQ accordion, stepper, modals, etc.
-assets/       → logos, icons, product images
+assets/       → logos, icons and product images
 
 
 ## Sections breakdown
