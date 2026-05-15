@@ -381,8 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (banner && triggerSection) {
     window.addEventListener("scroll", function () {
-      // Show banner once user reaches the manufacturing section
-      if (window.scrollY >= triggerSection.offsetTop - 100) {
+      if (window.scrollY >= triggerSection.offsetTop - 600) {
         banner.classList.add("visible");
       } else {
         banner.classList.remove("visible");

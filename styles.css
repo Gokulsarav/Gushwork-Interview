@@ -129,15 +129,15 @@
   .announcement-banner {
     top: 70px;
   }
-  
+
   .banner-line-1 {
     font-size: 13px;
   }
-  
+
   .banner-line-2 {
     font-size: 15px;
   }
-  
+
   .banner-thumb {
     width: 40px;
     height: 40px;
@@ -149,7 +149,7 @@
     flex-direction: row;
     gap: 10px;
   }
-  
+
   .btn-navy {
     padding: 8px 16px;
     font-size: 13px;
