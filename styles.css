@@ -173,11 +173,7 @@ h3 {
   padding: 14px 28px;
 }
 
-.btn-outline-white:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
-  color: #fff;
-}
+
 
 .btn-icon {
   font-size: 12px;
@@ -561,23 +557,28 @@ h3 {
 
 .trusted-logos {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   max-width: 100%;
   margin: 0;
   gap: 60px;
   flex-wrap: nowrap;
   overflow: hidden;
-  /* Prevent horizontal scroll */
+}
+
+.dl-icon {
+  height: 16px;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
 }
 
 .trusted-logos img {
   height: 130px;
-  /* Balanced large size */
   width: auto;
   opacity: 0.8;
   flex-shrink: 0;
-  /* Keep size consistent */
   object-fit: contain;
 }
 
@@ -636,7 +637,6 @@ h3 {
 
 .specs-section .wrapper-dark {
   padding: 100px var(--pad-h);
-  /* Specific Figma Spacing/100 */
   max-width: 100%;
   width: 100%;
 }
@@ -1021,10 +1021,12 @@ h3 {
   flex-direction: column;
   justify-content: flex-end;
   padding: 40px 32px;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.95) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
   color: #fff;
   border-radius: 20px;
 }
@@ -1785,7 +1787,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  border-bottom: 1px solid #f0f2f5;
+  border-bottom: none;
 }
 
 .modal-header h3 {
@@ -1796,17 +1798,27 @@ h3 {
 }
 
 .modal-close {
-  background: #f3f4f6;
-  border: none;
-  border-radius: 6px;
-  width: 28px;
-  height: 28px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #6b7280;
-  font-size: 18px;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background-color: #f9fafb;
+}
+
+.modal-divider {
+  border-top: 1.5px dotted #3b82f6;
+  width: 100%;
 }
 
 .modal-body {
@@ -1814,12 +1826,11 @@ h3 {
 }
 
 .modal-footer {
-  background-color: #f9fafb;
-  /* Light gray footer from image */
+  background-color: #f3f4f6;
   padding: 16px 24px;
   display: flex;
   justify-content: flex-end;
-  border-top: 1px solid #f0f2f5;
+  border-top: none;
 }
 
 .modal-footer .btn-primary {
@@ -1889,6 +1900,17 @@ h3 {
   border: none;
   margin-bottom: 0;
   flex-grow: 1;
+}
+
+.btn-disabled {
+  background-color: #e5e7eb;
+  color: #d1d5db;
+  cursor: not-allowed;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
 }
 
 .phone-input:focus {

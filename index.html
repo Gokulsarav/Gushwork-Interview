@@ -190,8 +190,7 @@
             </div>
 
             <div class="specs-actions">
-                <button id="openDownloadModal" class="btn btn-outline-white"><i
-                        class="fa-solid fa-download btn-icon-left"></i> Download Full Technical Datasheet</button>
+                <button id="openDownloadModal" class="btn btn-outline-white"><img src="./assets/icons/download.svg" alt="Download" class="dl-icon"> Download Full Technical Datasheet</button>
             </div>
         </div>
     </section>
@@ -721,8 +720,9 @@
         <div class="modal">
             <div class="modal-header">
                 <h3>Let us email the entire catalogue to you</h3>
-                <button class="modal-close" id="closeDownloadModal">&times;</button>
+                <button class="modal-close" id="closeDownloadModal"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            <div class="modal-divider"></div>
             <div class="modal-body">
                 <div class="form-group">
                     <label>Your Email *</label>
@@ -730,17 +730,12 @@
                 </div>
                 <div class="form-group">
                     <label>Your Contact (Optional)</label>
-                    <div class="phone-input-group">
-                        <select class="country-code">
-                            <option value="+91">+91</option>
-                        </select>
-                        <input type="tel" placeholder="7003026616" class="form-input phone-input">
-                    </div>
+                    <input type="tel" placeholder="+91-0000000000" class="form-input">
                 </div>
             </div>
+            <div class="modal-divider"></div>
             <div class="modal-footer">
-                <button class="btn btn-primary"
-                    style="background-color: #dee2e6; color: #adb5bd; cursor: not-allowed;">Download Brochure</button>
+                <button class="btn btn-disabled">Download Brochure</button>
             </div>
         </div>
     </div>
