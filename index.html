@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Urbanist:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <!-- Icons (using Font Awesome for placeholders) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="./assets/logo.png">
 </head>
@@ -30,6 +30,20 @@
             </div>
         </div>
     </header>
+    <div class="announcement-banner">
+        <div class="banner-container">
+            <div class="banner-left">
+                <div class="banner-thumb"></div>
+                <div class="banner-text">
+                    <p class="banner-line-1">Premium HDPE Pipes & Coils for Modern Infrastructure</p>
+                    <p class="banner-line-2">₹4,80,000 - 7,90,000</p>
+                </div>
+            </div>
+            <div class="banner-right">
+                <button class="btn btn-navy">Get Custom Quote</button>
+            </div>
+        </div>
+    </div>
 
     <div class="top-section-bg">
         <div class="page-wrapper">
@@ -190,7 +204,7 @@
             </div>
 
             <div class="specs-actions">
-                <button id="openDownloadModal" class="btn btn-outline-white"><img src="./assets/icons/download.svg" alt="Download" class="dl-icon"> Download Full Technical Datasheet</button>
+                <button id="openDownloadModal" class="btn btn-outline-white"><img src="./assets/icons/download-simple.svg" alt="Download" class="dl-icon"> Download Full Technical Datasheet</button>
             </div>
         </div>
     </section>
@@ -551,7 +565,7 @@
                 <h3 class="portfolio-card-title">HDPE Fittings & Accessories</h3>
                 <p class="portfolio-card-desc">Complete range of electrofusion and butt fusion fittings, including
                     elbows, tees, reducers, and couplers for seamless pipe connections.</p>
-                <img src="./assets/hdpe-product.jpg" alt="Local Asset">
+                <img src="./assets/worker-inspection.jpg" alt="Worker Inspection">
                 <button class="btn btn-muted">Learn More</button>
             </div>
             <!-- Card 2 -->
@@ -559,7 +573,7 @@
                 <h3 class="portfolio-card-title">Professional Installation Services</h3>
                 <p class="portfolio-card-desc">Expert installation and fusion welding services ensuring optimal system
                     performance, compliance with standards, and long-term reliability.</p>
-                <img src="./assets/hdpe-product.jpg" alt="Local Asset">
+                <img src="./assets/team-discussion.jpg" alt="Team Discussion">
                 <button class="btn btn-muted">Learn More</button>
             </div>
             <!-- Card 3 -->
@@ -567,7 +581,7 @@
                 <h3 class="portfolio-card-title">PE-RT Heating Pipes</h3>
                 <p class="portfolio-card-desc">Polyethylene of Raised Temperature resistance pipes ideal for underfloor
                     heating, radiator connections, and hot water applications.</p>
-                <img src="./assets/hdpe-product.jpg" alt="Local Asset">
+                <img src="./assets/worker-inspection.jpg" alt="Worker Inspection">
                 <button class="btn btn-muted">Learn More</button>
             </div>
         </div>
@@ -614,7 +628,7 @@
     <div class="page-wrapper cta-wrapper top-section-bg">
         <div class="mega-cta">
             <div class="mega-cta-left">
-                <h2>Ready to Transform Your <br class="d-none d-md-block">Textile Manufacturing?</h2>
+                <h2>Ready to Transform Your Textile Manufacturing?</h2>
                 <p class="mega-cta-desc">Get a personalized consultation and quote for machinery solutions tailored to
                     your specific production requirements.</p>
                 <div class="mega-cta-contact">
@@ -744,8 +758,9 @@
         <div class="modal">
             <div class="modal-header">
                 <h3>Request a call back</h3>
-                <button class="modal-close" id="closeQuoteModal">&times;</button>
+                <button class="modal-close" id="closeQuoteModal"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            <div class="modal-divider"></div>
             <div class="modal-body">
                 <input type="text" placeholder="Full Name" class="form-input mb-16">
                 <input type="text" placeholder="Company Name" class="form-input mb-16">
@@ -757,6 +772,7 @@
                     <input type="tel" placeholder="7003026616" class="form-input phone-input">
                 </div>
             </div>
+            <div class="modal-divider"></div>
             <div class="modal-footer">
                 <button class="btn btn-primary">Submit Form</button>
             </div>

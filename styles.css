@@ -48,6 +48,114 @@
   box-sizing: border-box;
 }
 
+/* Announcement Banner */
+.announcement-banner {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #eef0f3;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.announcement-banner.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.banner-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--pad-h);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-thumb {
+  width: 48px;
+  height: 48px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.banner-line-1 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0;
+}
+
+.banner-line-2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 2px 0 0;
+}
+
+.btn-navy {
+  background-color: #26357a;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-navy:hover {
+  background-color: #1c2a63;
+}
+
+@media (max-width: 768px) {
+  .announcement-banner {
+    top: 70px;
+  }
+  
+  .banner-line-1 {
+    font-size: 13px;
+  }
+  
+  .banner-line-2 {
+    font-size: 15px;
+  }
+  
+  .banner-thumb {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner-container {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .btn-navy {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
 html,
 body {
   margin: 0;
@@ -62,7 +170,6 @@ body {
   color: var(--text-body);
   line-height: 1.5;
   padding-top: 80px;
-  /* Space for fixed header */
 }
 
 .top-section-bg {
@@ -173,8 +280,6 @@ h3 {
   padding: 14px 28px;
 }
 
-
-
 .btn-icon {
   font-size: 12px;
   margin-left: 8px;
@@ -245,7 +350,6 @@ h3 {
 /* Breadcrumbs */
 .breadcrumbs {
   padding: 12px var(--pad-h) 8px;
-  /* Reduced padding */
   font-size: 13px;
   color: var(--text-light);
   display: flex;
@@ -269,15 +373,12 @@ h3 {
   align-items: flex-start;
   padding-top: 20px;
   padding-bottom: 0;
-  /* Clear space for trusted section padding */
 }
 
 .product-gallery {
   width: 48%;
-  /* Increased for larger thumbnails */
   flex-shrink: 0;
   order: 1;
-  /* Left on desktop */
   position: relative;
 }
 
@@ -285,7 +386,6 @@ h3 {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  /* Critical for zoom effect */
   background-color: #f1f3f7;
   height: 500px;
   cursor: zoom-in;
@@ -297,7 +397,6 @@ h3 {
   object-fit: cover;
   display: block;
   transition: transform 0.1s ease-out;
-  /* Smooth tracking */
 }
 
 .zoom-lens {
@@ -311,12 +410,10 @@ h3 {
   z-index: 10;
   border-radius: 8px;
   pointer-events: none;
-  /* Let clicks pass through to gallery buttons if needed, or handle in JS */
 }
 
 .zoom-lens::after {
   content: "\f00e";
-  /* FontAwesome Plus Icon */
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   position: absolute;
@@ -388,7 +485,6 @@ h3 {
   display: flex;
   gap: 12px;
   margin-top: 16px;
-  /* Correctly matches Figma spacing separation */
 }
 
 .thumb {
@@ -397,7 +493,6 @@ h3 {
   background-color: #fff;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  /* Default outline as seen in image */
   cursor: pointer;
   overflow: hidden;
 }
@@ -408,10 +503,8 @@ h3 {
   object-fit: cover;
   display: block;
   opacity: 0;
-  /* Fallback for empty placeholders if images don't load */
 }
 
-/* Specific styling to ensure images map tightly if present */
 .thumb img[src] {
   opacity: 1;
 }
@@ -423,9 +516,7 @@ h3 {
 
 .product-details {
   width: 48%;
-  /* Balanced with larger gallery */
   order: 2;
-  /* Right on desktop */
 }
 
 .badges-row {
@@ -433,7 +524,6 @@ h3 {
   gap: 12px;
   margin-bottom: 24px;
   flex-wrap: wrap;
-  /* allow 3rd badge to wrap cleanly on mobile */
 }
 
 .badge {
@@ -446,7 +536,6 @@ h3 {
 .badge-outline {
   border: 1px solid var(--border);
   background-color: #f1f3f7;
-  /* Gray background from reference */
   color: var(--text-dark);
   display: inline-flex;
   align-items: center;
@@ -571,7 +660,7 @@ h3 {
   width: auto;
   margin-right: 8px;
   vertical-align: middle;
-  filter: brightness(0) invert(1);
+  /* filter: brightness(0) invert(1); */
 }
 
 .trusted-logos img {
@@ -637,7 +726,8 @@ h3 {
 
 .specs-section .wrapper-dark {
   padding: 100px var(--pad-h);
-  max-width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -1295,7 +1385,6 @@ h3 {
   margin-bottom: 16px;
   line-height: 1.4;
   max-width: 320px;
-  /* force exactly a 2-line break for titles */
 }
 
 .testimonial-text {
@@ -1335,7 +1424,6 @@ h3 {
   color: #6b7280;
 }
 
-/* --- Solutions Portfolio && Resources Common --- */
 .portfolio-section,
 .resources-section {
   padding: 50px var(--pad-h);
@@ -1630,11 +1718,7 @@ h3 {
   font-weight: 600;
   color: #fff;
   margin-top: 8px;
-  transition: all 0.3s;
-}
-
-.btn-dark:hover {
-  background-color: var(--primary-hover);
+  transition: none;
 }
 
 .main-footer {
@@ -1648,8 +1732,8 @@ h3 {
 }
 
 .footer-top-box {
-  border: 1px solid #eef0f3;
-  border-radius: 100px;
+  border: 2px solid #e7e9ec;
+  border-radius: 25px;
   /* full pill shape */
   background-color: #f8f9fa;
   padding: 24px 64px;
@@ -1661,8 +1745,8 @@ h3 {
 
 .footer-tagline {
   font-size: 20px;
-  font-weight: 500;
-  text-align: right;
+  font-weight: 600;
+  text-align: left;
   line-height: 1.4;
 }
 
@@ -1743,7 +1827,6 @@ h3 {
   color: var(--primary-hover);
 }
 
-/* --- Modals / Popups --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1759,7 +1842,6 @@ h3 {
   visibility: hidden;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  /* Heavy blur as seen in image */
 }
 
 .modal-overlay.active {
